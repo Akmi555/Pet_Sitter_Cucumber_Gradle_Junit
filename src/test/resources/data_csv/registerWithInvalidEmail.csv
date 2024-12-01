@@ -1,0 +1,4 @@
+test_negativemail.test,QWERTqwe123!,Name1,LastName1,description1,photo1
+test_@negativemail@.test,QWERTqwe123!,Name1,LastName1,description1,photo1
+test_negative@mailtest,QWERTqwe123!,Name1,LastName1,description1,photo1
+test_negative@mail.t,QWERTqwe123!,Name1,LastName1,description1,photo1

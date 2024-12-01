@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="RegressionTest" verbose="1">
+    <test name="PositiveTests">
+        <classes>
+            <class name="petSitter.tests_API.api_auth_me.DeleteUsersProfilePositiveTests"/>
+            <class name="petSitter.tests_API.api_auth_me.GetMyProfilePositiveTests"/>
+            <class name="petSitter.tests_API.api_auth_me.UpdateUsersProfilePositiveTests"/>
+            <class name="petSitter.tests_API.api_auth_register_restore.RecoveryAccountPositiveTests"/>
+            <class name="petSitter.tests_API.api_auth_user_.AddCommentPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.AddBookingPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.GetMyBookingByBookingsIdPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.SitterRejectedBookingPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.SitterConfirmedBookingPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.UserCancelsBookingPositiveTests"/>
+            <class name="petSitter.tests_API.api_bookings_.UserCancelsBookingPositiveTests"/>
+            <class name="petSitter.tests_API.api_pets.AddPetsPositiveTests"/>
+            <class name="petSitter.tests_API.api_pets_me.GetAllPetsByUserPositiveTests"/>
+            <class name="petSitter.tests_API.api_services.AddNewServicesPositiveTests"/>
+            <class name="petSitter.tests_API.api_services.DeleteServiceByIdFromUserPositiveTests"/>
+            <class name="petSitter.tests_API.api_services.UpdateServicesPositiveTests"/>
+            <class name="petSitter.tests_API.api_services__sitterId_.GetAllServicesByUserPositiveTests"/>
+            <class name="petSitter.tests_API.api_services_categories.GetAllCategoriesPositiveTests"/>
+            <class name="petSitter.tests_API.api_user.GetUserProfileByEmailPositiveTests"/>
+            <class name="petSitter.tests_API.api_user.GetUserProfileByEmailPositiveTests"/>
+
+        </classes>
+    </test>
+</suite>
