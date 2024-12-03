@@ -34,7 +34,7 @@ public class SitterRejectedBookingPositiveTests extends TestBase {
         responseToken = getTokenAfterLogin(email, password);
         // услугу бронирует заказчик
         BookingNewStatusDTO bookingCancelRequest = BookingNewStatusDTO.builder()
-                .id(getIdAddBooking(email11, password11, 13))
+                .id(getIdAddBooking(email11, password11, email,password))
                 .status("rejected")
                 .build();
 

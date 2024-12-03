@@ -103,10 +103,10 @@ public class TestBase {
     }
 
 
-    public int getIdAddBooking(String emailOwner, String passwordOwner, int idSitter) {
+    public int getIdAddBooking(String emailOwner, String passwordOwner, String emailSitter, String passwordSitter) {
 
 //получить все сервисы ситтерра (idSitter)
-        int[] idServices = getAllServicesBySitter(emailOwner, passwordOwner, idSitter);
+        int[] idServices = getAllServicesBySitter(emailSitter, passwordSitter);
         int[] idPets=getAllPetsByUser(emailOwner, passwordOwner);
 
 
@@ -157,26 +157,26 @@ public class TestBase {
 
     }
 
-    public int[] getAllServicesBySitter(String emailOwner, String passwordOwner, int idSitter) {
+    public int[] getAllServicesBySitter(String email, String password) {
         //int sittersId=getIdByUser(email, password);
 
-        String responseToken = getTokenAfterLogin(emailOwner, passwordOwner);
+        String responseToken = getTokenAfterLogin(email, password);
         Response response = given()
                 .header(AUTH, "Bearer " + responseToken)
                 .contentType(ContentType.JSON)
                 .when()
-                .get("/services?sitterId=" + idSitter)
+                .get("/services/me")
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .extract().response();
 
         Gson gson = new Gson();
-        List<ServiceDTO> services = response.jsonPath().getList("", ServiceDTO.class);
+        List<ResponseServiceDTO> services = response.jsonPath().getList("", ResponseServiceDTO.class);
         String servicesJson = gson.toJson(services);
         int[] idServices = new int[services.size()];
         for (int i = 0; i < services.size(); i++) {
-            ServiceDTO service = services.get(i);
+            ResponseServiceDTO service = services.get(i);
             idServices[i] = service.getId();
 
             // Печать информации об услуге

@@ -32,7 +32,7 @@ public class UserCancelsBookingPositiveTests extends TestBase {
         responseToken = getTokenAfterLogin(email, password);
 // отказывает заказчик
         BookingNewStatusDTO bookingCancelRequest = BookingNewStatusDTO.builder()
-                .id(getIdAddBooking(email, password, 11))
+                .id(getIdAddBooking(email, password, email11,password11))
                 .status("cancelled")
                 .build();
 // отклоняет услугу ситтер

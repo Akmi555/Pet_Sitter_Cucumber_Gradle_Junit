@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import petSitter.dto.AuthRequestDTO;
+import petSitter.dto.ResponseServiceDTO;
 import petSitter.dto.ServiceDTO;
 import petSitter.tests_API.TestBase;
 
@@ -61,22 +62,22 @@ public class GetAllServicesByUserPositiveTests extends TestBase {
 
     @Test
     public void getAllServicesByUserPositiveTest() {
-        int sittersId=getIdByUser(email, password);
+       // int sittersId=getIdByUser(email, password);
         Response response = given()
                 .header(AUTH, "Bearer " + responseToken)
                 .contentType(ContentType.JSON)
                 .when()
-                .get("/services?sitterId="+sittersId)
+                .get("/services/me")
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .extract().response();
 
         Gson gson = new Gson();
-        List<ServiceDTO> services = response.jsonPath().getList("", ServiceDTO.class);
+        List<ResponseServiceDTO> services = response.jsonPath().getList("", ResponseServiceDTO.class);
         String servicesJson = gson.toJson(services);
-        System.out.println(servicesJson);
-        for (ServiceDTO service : services) {
+       // System.out.println(servicesJson);
+        for (ResponseServiceDTO service : services) {
             System.out.println("ID: " + service.getId());
             System.out.println("Title : " + service.getTitle());
             System.out.println("Price : " + service.getPrice());
@@ -87,5 +88,15 @@ public class GetAllServicesByUserPositiveTests extends TestBase {
         }
 
     }
+
+
+@Test
+    public void tttt(){
+    String email11 = "1732294206096getUserByEmail@mail.test";
+    String password11 = "QWERTqwe123!";
+
+    getIdAddBooking(email,password, email11,password11 );
+}
+
 
 }
