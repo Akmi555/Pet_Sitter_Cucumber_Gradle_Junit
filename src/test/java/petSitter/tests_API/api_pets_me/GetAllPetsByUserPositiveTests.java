@@ -82,7 +82,7 @@ public class GetAllPetsByUserPositiveTests extends TestBase {
             System.out.println("Name : " + pet.getName());
             System.out.println("Type : " + pet.getType());
             System.out.println("Photo : " + pet.getPhoto());
-            System.out.println("User : " + pet.getUser().getLastName() + " " + pet.getUser().getFirstName());
+          //  System.out.println("User : " + pet.getUser().getLastName() + " " + pet.getUser().getFirstName());
 
             System.out.println("-------------------------");
 

@@ -19,7 +19,7 @@
             <class name="petSitter.tests_API.api_services.AddNewServicesPositiveTests"/>
             <class name="petSitter.tests_API.api_services.DeleteServiceByIdFromUserPositiveTests"/>
             <class name="petSitter.tests_API.api_services.UpdateServicesPositiveTests"/>
-            <class name="petSitter.tests_API.api_services__sitterId_.GetAllServicesByUserPositiveTests"/>
+            <class name="petSitter.tests_API.api_services__me.GetAllServicesByUserPositiveTests"/>
             <class name="petSitter.tests_API.api_services_categories.GetAllCategoriesPositiveTests"/>
             <class name="petSitter.tests_API.api_user.GetUserProfileByEmailPositiveTests"/>
             <class name="petSitter.tests_API.api_user.GetUserProfileByEmailPositiveTests"/>

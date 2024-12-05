@@ -218,7 +218,7 @@ public class TestBase {
             System.out.println("Name : " + pet.getName());
             System.out.println("Type : " + pet.getType());
             System.out.println("Photo : " + pet.getPhoto());
-            System.out.println("User : " + pet.getUser().getLastName() + " " + pet.getUser().getFirstName());
+            //System.out.println("User : " + pet.getUser().getLastName() + " " + pet.getUser().getFirstName());
 
             System.out.println("-------------------------");
             System.out.println("Все ID питомцев юзера: " + Arrays.toString(idPets));
@@ -302,6 +302,58 @@ public void addNewService(String email, String password, String serviceTitle, do
         return idCategories;
     }
 
+    public int getIdAddBookingWithChooseData(String emailOwner, String passwordOwner, String emailSitter, String passwordSitter, String startData, String endData) {
 
+//получить все сервисы ситтерра (idSitter)
+        int[] idServices = getAllServicesBySitter(emailSitter, passwordSitter);
+        int[] idPets=getAllPetsByUser(emailOwner, passwordOwner);
+
+
+        String responseToken = getTokenAfterLogin(emailOwner, passwordOwner);
+        AuthRequestDTO requestDTO = AuthRequestDTO.builder()
+                .email(emailOwner)
+                .password(passwordOwner)
+                .build();
+
+        AuthRequestDTO requestDTOReg = AuthRequestDTO.builder()
+                .email(emailOwner)
+                .password(passwordOwner)
+                .firstName("Mary")
+                .lastName("Ann")
+                .description("Добавляем питомца")
+                .build();
+
+        BookingDTO bookingDTO = BookingDTO.builder()
+                .serviceId(idServices[0])
+                .petId(idPets[0])
+                .startDate(startData)
+                .endDate(endData)
+                .build();
+
+
+        SoftAssert softAssert = new SoftAssert();
+        BookingDTO booking = given()
+                .header(AUTH, "Bearer " + responseToken)
+                .contentType(ContentType.JSON)
+                .body(bookingDTO)
+                .when()
+                .post("/bookings")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract().response().as(BookingDTO.class);
+        System.out.println("Даты бронирования: " + booking.getStartDate() + "-" + booking.getEndDate());
+        System.out.println("ID услуги: " + booking.getServiceId());
+        System.out.println("Id вашей брони:" + booking.getId());
+        System.out.println("Статус вашей брони " + booking.getStatus());
+        softAssert.assertEquals(booking.getStartDate(), bookingDTO.getStartDate());
+        softAssert.assertEquals(booking.getEndDate(), bookingDTO.getEndDate());
+        softAssert.assertEquals(booking.getServiceId(), bookingDTO.getServiceId());
+        softAssert.assertEquals(booking.getPetId(), bookingDTO.getPetId());
+        softAssert.assertAll();
+
+        return booking.getId();
+
+    }
 
 }

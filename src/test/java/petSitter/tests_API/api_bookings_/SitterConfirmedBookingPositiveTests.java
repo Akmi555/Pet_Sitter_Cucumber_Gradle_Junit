@@ -2,9 +2,11 @@ package petSitter.tests_API.api_bookings_;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import petSitter.dto.AuthRequestDTO;
 import petSitter.dto.BookingNewStatusDTO;
+import petSitter.dto.ResponseServiceStatusDTO;
 import petSitter.tests_API.TestBase;
 
 import static io.restassured.RestAssured.given;
@@ -37,7 +39,7 @@ public class SitterConfirmedBookingPositiveTests extends TestBase {
                 .status("confirmed")
                 .build();
 
-        Response serviceDTO = given()
+        ResponseServiceStatusDTO serviceDTO = given()
                 .header(AUTH, "Bearer " + responseToken)
                 .contentType(ContentType.JSON)
                 .body(bookingCancelRequest)
@@ -46,8 +48,10 @@ public class SitterConfirmedBookingPositiveTests extends TestBase {
                 .then()
                 .assertThat()
                 .statusCode(200)
-                .extract().response();
-        System.out.println("Response :" + serviceDTO.asString());
+                .extract().response().as(ResponseServiceStatusDTO .class);
+        System.out.println("Booking Id :" + serviceDTO.getId());
+        System.out.println("New status: "+serviceDTO.getStatus());
+        Assert.assertEquals(serviceDTO.getStatus(), bookingCancelRequest.getStatus());
 
     }
 

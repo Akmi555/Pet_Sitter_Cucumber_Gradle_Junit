@@ -1,4 +1,4 @@
-package petSitter.tests_API.api_services__sitterId_;
+package petSitter.tests_API.api_services__me;
 
 import com.google.gson.Gson;
 import io.restassured.http.ContentType;
@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import petSitter.dto.AuthRequestDTO;
 import petSitter.dto.ResponseServiceDTO;
-import petSitter.dto.ServiceDTO;
 import petSitter.tests_API.TestBase;
 
 import java.util.List;
@@ -90,13 +89,13 @@ public class GetAllServicesByUserPositiveTests extends TestBase {
     }
 
 
-@Test
-    public void tttt(){
-    String email11 = "1732294206096getUserByEmail@mail.test";
-    String password11 = "QWERTqwe123!";
-
-    getIdAddBooking(email,password, email11,password11 );
-}
+//@Test
+//    public void tttt(){
+//    String email11 = "1732294206096getUserByEmail@mail.test";
+//    String password11 = "QWERTqwe123!";
+//
+//    getIdAddBooking(email,password, email11,password11 );
+//}
 
 
 }
