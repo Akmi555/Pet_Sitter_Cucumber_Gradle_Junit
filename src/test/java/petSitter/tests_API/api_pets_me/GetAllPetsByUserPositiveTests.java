@@ -75,7 +75,7 @@ public class GetAllPetsByUserPositiveTests extends TestBase {
         Gson gson = new Gson();
         List<PetDTO> pets = response.jsonPath().getList("", PetDTO.class);
         String petsJson = gson.toJson(pets);
-       // System.out.println(petsJson);
+        //System.out.println(petsJson);
 
         for (PetDTO pet : pets) {
             System.out.println("ID: " + pet.getId());

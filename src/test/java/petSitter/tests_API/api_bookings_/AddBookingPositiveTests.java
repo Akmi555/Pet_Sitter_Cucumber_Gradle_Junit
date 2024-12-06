@@ -22,8 +22,8 @@ public class AddBookingPositiveTests extends TestBase {
 
 
     BookingDTO bookingDTO = BookingDTO.builder()
-            .serviceId(1)
-            .petId(2)
+            .serviceId(2)
+            .petId(1)
             .startDate("2025-02-02")
             .endDate("2025-05-05")
             .build();

@@ -22,7 +22,7 @@ public class TestBase {
 
     @BeforeMethod
     public void init() {
-        RestAssured.baseURI = "http://localhost:8080";
+        RestAssured.baseURI = "https://pets-care-u2srs.ondigitalocean.app";
         RestAssured.basePath = "api";
     }
 

@@ -15,8 +15,11 @@ import static io.restassured.RestAssured.given;
 
 public class GetAllServicesByUserPositiveTests extends TestBase {
 
-    String email = "test1_user_sitter@mail.test";
+    String email = "1732294206096getUserByEmail@mail.test";
     String password = "QWERTqwe123!";
+
+//    String email = "test1_user_sitter@mail.test";
+//    String password = "QWERTqwe123!";
     String responseToken;
     AuthRequestDTO requestDTO = AuthRequestDTO.builder()
             .email(email)
@@ -75,7 +78,7 @@ public class GetAllServicesByUserPositiveTests extends TestBase {
         Gson gson = new Gson();
         List<ResponseServiceDTO> services = response.jsonPath().getList("", ResponseServiceDTO.class);
         String servicesJson = gson.toJson(services);
-       // System.out.println(servicesJson);
+       System.out.println(servicesJson);
         for (ResponseServiceDTO service : services) {
             System.out.println("ID: " + service.getId());
             System.out.println("Title : " + service.getTitle());

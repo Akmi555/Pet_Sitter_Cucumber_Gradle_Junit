@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import petSitter.core.BasePage;
 
 public class HomePage extends BasePage {
-    public HomePage(WebDriver driver) {
+    public HomePage() {
         super(driver);
     }
 

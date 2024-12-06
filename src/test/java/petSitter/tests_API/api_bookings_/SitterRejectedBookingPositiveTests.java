@@ -31,7 +31,7 @@ public class SitterRejectedBookingPositiveTests extends TestBase {
             .build();
 
     @Test
-    public void userCancelsBookingPositiveTest() {
+    public void userRejectedBookingPositiveTest() {
 // логинется ситтер чтобы отклонить услугу
         responseToken = getTokenAfterLogin(email, password);
         // услугу бронирует заказчик
@@ -58,7 +58,7 @@ public class SitterRejectedBookingPositiveTests extends TestBase {
 
 
     @Test
-    public void t(){
+    public void userRejectedAfterConfirmedBookingPositiveTest(){
         responseToken = getTokenAfterLogin(email, password);
         // услугу бронирует заказчик
         BookingNewStatusDTO bookingCancelRequest = BookingNewStatusDTO.builder()

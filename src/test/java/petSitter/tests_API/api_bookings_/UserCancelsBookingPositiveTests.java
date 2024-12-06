@@ -9,6 +9,8 @@ import petSitter.dto.BookingNewStatusDTO;
 import petSitter.dto.ResponseServiceStatusDTO;
 import petSitter.tests_API.TestBase;
 import static io.restassured.RestAssured.given;
+
+
 public class UserCancelsBookingPositiveTests extends TestBase {
 
     //Заказчик

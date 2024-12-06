@@ -15,10 +15,13 @@ import static io.restassured.RestAssured.given;
 
 public class AddNewServicesPositiveTests extends TestBase {
 
+//    String email = "1732294206096getUserByEmail@mail.test";
+//    String password = "QWERTqwe123!";
+
     String email = "test1_user_sitter@mail.test";
     String password = "QWERTqwe123!";
     String responseToken;
-    int serviceCategory = 2;
+    int serviceCategory = 1;
     AuthRequestDTO requestDTO = AuthRequestDTO.builder()
             .email(email)
             .password(password)
@@ -34,7 +37,7 @@ public class AddNewServicesPositiveTests extends TestBase {
 
     ServiceDTO serviceNew = ServiceDTO.builder()
             .serviceCategory(serviceCategory)
-            .title("Выгуливать пёсика")
+            .title("Передержка котиков")
             .description("Выгуливать песика 3 раза в день")
             .price(500)
             .build();

@@ -24,7 +24,7 @@ public class DeleteServiceByIdFromUserPositiveTests extends TestBase {
 
 
     }
-    /*
+
     @Test
     public void deleteServicePositiveTest() {
         int[] idServicesBefore = getAllServicesBySitter(email, password);
@@ -42,11 +42,11 @@ public class DeleteServiceByIdFromUserPositiveTests extends TestBase {
                 .statusCode(200)
                 .extract().response();
         System.out.println("Response :" + serviceDTO.asString());
-        int[] idServicesAfter = getAllServicesBySitter(email, password, 13);
+        int[] idServicesAfter = getAllServicesBySitter(email, password);
         int capacityAfter = idServicesAfter.length;
         System.out.println("Количество услуг после удаления: " + capacityAfter);
         Assert.assertEquals(capacityBefore, capacityAfter + 1);
     }
 
-     */
+
 }

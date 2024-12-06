@@ -24,7 +24,8 @@ public class BasePage {
 
     }
 
-    public void init(String browser) {
+    public void init() {
+        String browser="chrome";
 
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options=new ChromeOptions();
