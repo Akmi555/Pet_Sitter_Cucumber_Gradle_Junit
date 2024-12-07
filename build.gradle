@@ -60,3 +60,53 @@ tasks.withType(JavaCompile) {
 }
 registerTask('smoke', 'src/test/resources/smoke.xml')
 registerTask('regression', 'src/test/resources/regression.xml')
+
+//========================================================================
+
+tasks.register('cucumberChrome') {
+    dependsOn 'testClasses'
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = sourceSets.test.runtimeClasspath
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'html:build/reports/cucumber-chrome.html',
+                    '--plugin', 'json:build/reports/cucumber-chrome.json',
+                    '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
+                    'src/test/resources/features']
+            systemProperty 'browser', 'chrome'
+        }
+    }
+}
+
+tasks.register('cucumberFirefox') {
+    dependsOn 'testClasses'
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = sourceSets.test.runtimeClasspath
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'html:build/reports/cucumber-firefox.html',
+                    '--plugin', 'json:build/reports/cucumber-firefox.json',
+                    '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
+                    'src/test/resources/features']
+            systemProperty 'browser', 'firefox'
+        }
+    }
+}
+
+tasks.register('cucumberEdge') {
+    dependsOn 'testClasses'
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = sourceSets.test.runtimeClasspath
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'html:build/reports/cucumber-edge.html',
+                    '--plugin', 'json:build/reports/cucumber-edge.json',
+                    '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
+                    'src/test/resources/features']
+            systemProperty 'browser', 'edge'
+        }
+    }
+}

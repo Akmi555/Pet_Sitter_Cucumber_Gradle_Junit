@@ -1,6 +1,8 @@
 package petSitter.core;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -15,7 +17,7 @@ public class BasePage {
 
 
     public static WebDriver driver;
-    private static String browser;
+    public static String browser;
     public WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
@@ -23,10 +25,10 @@ public class BasePage {
         PageFactory.initElements(driver, this);
 
     }
-
+/*
     public void init() {
-        String browser="chrome";
 
+        browser = System.getProperty("browser", "chrome"); // По умолчанию Chrome
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options=new ChromeOptions();
             //options.addArguments("window-size=1920x1080");
@@ -43,7 +45,7 @@ public class BasePage {
         }
 
         {
-            driver.get("https://telranedu.web.app/home");
+            driver.get("https://pets-care-u2srs.ondigitalocean.app");
             driver.manage().window().maximize();//разворачивает браузер на весь экран
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));// неявное ожидание 10 c
             wait = new WebDriverWait(driver, Duration.ofSeconds(5));// явное ожидание
@@ -53,6 +55,33 @@ public class BasePage {
         }
     }
 
+*/
+public void init() {
+    browser = System.getProperty("browser", "chrome"); // По умолчанию Chrome
+    if (browser.equalsIgnoreCase("chrome")) {
+        driver = new ChromeDriver();
+    } else if (browser.equalsIgnoreCase("firefox")) {
+        driver = new FirefoxDriver();
+    } else if (browser.equalsIgnoreCase("edge")) {
+        driver = new EdgeDriver();
+    } else {
+        throw new IllegalArgumentException("Unsupported browser: " + browser);
+    }
+
+    driver.get("https://pets-care-u2srs.ondigitalocean.app");
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+}
+
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 
 
 }
