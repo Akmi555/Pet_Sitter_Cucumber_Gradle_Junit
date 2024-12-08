@@ -1,5 +1,6 @@
 package petSitter.core;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -82,6 +83,15 @@ public void init() {
             return false;
         }
     }
+    public void clickElement(By locator) {
+        driver.findElement(locator).click();
+    }
 
+
+    public void click(WebElement element) {
+
+        element.click();
+
+    }
 
 }

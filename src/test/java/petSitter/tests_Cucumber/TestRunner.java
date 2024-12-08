@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
         (
                 features = "src/test/resources/features",
                 glue = "petSitter.tests_Cucumber.stepsDefinitions",
-                plugin={"pretty", "html:target/cucumber-reports.html"}
-               // tags= "@Login or @InvalidPassword"
+                plugin={"pretty", "html:target/cucumber-reports.html"},
+                tags= "@ChooseServiceForMyPetPositive"
 
 
         )
