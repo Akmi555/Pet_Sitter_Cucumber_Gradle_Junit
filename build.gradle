@@ -76,6 +76,7 @@ tasks.register('cucumberChrome') {
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:build/reports/cucumber-chrome.html',
                     '--plugin', 'json:build/reports/cucumber-chrome.json',
+                    '--plugin', 'junit:build/test-results/cucumber/cucumber-chrome.xml', // Для JUnit отчетов
                     '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
                     'src/test/resources/features']
             systemProperty 'browser', 'chrome'
@@ -92,6 +93,7 @@ tasks.register('cucumberFirefox') {
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:build/reports/cucumber-firefox.html',
                     '--plugin', 'json:build/reports/cucumber-firefox.json',
+                    '--plugin', 'junit:build/test-results/cucumber/cucumber-firefox.xml', // Для JUnit отчетов
                     '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
                     'src/test/resources/features']
             systemProperty 'browser', 'firefox'
@@ -108,6 +110,7 @@ tasks.register('cucumberEdge') {
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:build/reports/cucumber-edge.html',
                     '--plugin', 'json:build/reports/cucumber-edge.json',
+                    '--plugin', 'junit:build/test-results/cucumber/cucumber-edge.xml', // Для JUnit отчетов
                     '--glue', 'petSitter.tests_Cucumber.stepsDefinitions',
                     'src/test/resources/features']
             systemProperty 'browser', 'edge'
