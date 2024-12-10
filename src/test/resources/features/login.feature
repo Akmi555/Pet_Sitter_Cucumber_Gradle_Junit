@@ -6,7 +6,7 @@ Feature: Sign in to your account
   @LoginPositive
   Scenario: Successful login to your account
     Given The user launches the browser
-    When The user opens the petSitter homepage
+    When User opens home page petSitter
     And  I'm going to the login page
     And I fill in valid login and password
     And I click the submit

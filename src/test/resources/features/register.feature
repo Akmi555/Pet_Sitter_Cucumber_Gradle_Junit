@@ -1,35 +1,49 @@
 Feature: User Registration
-  As a new user
-  I want to register an account
-  So that I can use the pet sitting service
-@RegisterPositive
+
+  @RegisterPositive
   Scenario: Successful user registration
     Given The user launches the browser
-    When The user opens the petSitter homepage
-    And I'm going to the registration page
-    And I fill in valid registration data
-    And I submit the form
-    Then I should see the login page
+    When User opens home page petSitter
+    And The user clicks the registration button Sign in
+    And The user fills out the registration form
+    And The user clicks the registration button
+    Then Check that the user is on the LoginPage
     And The user closes the browser
 
-@RegisterNegativeWithInvalidPassword
-  Scenario: Failed user registration with invalid data
+  @RegisterNegativeWithInvalidPassword
+    Scenario Outline: Registration with invalid password
     Given The user launches the browser
-    When The user opens the petSitter homepage
-    And I'm going to the registration page
-    And I fill in the registration data with a short password
-    And I'm trying to submit a registration form with incorrect details
-    Then I should see an error message indicating that the password is too short
+    When User opens home page petSitter
+    And The user clicks the registration button Sign in
+    And The user fills out the registration form:
+      | firstName   | lastName   | email   | password   |
+      | <firstName> | <lastName> | <email> | <password> |
+    And The user clicks the registration button
+    Then User checks display of text about invalid password
     And The user closes the browser
 
+    Examples:
+      | firstName  | lastName  | email                   | password |
+      | FirstName1 | LastName1 | test_neganive@mail.test | qwer1Q!  |
+      | FirstName1 | LastName1 | test_neganive@mail.test | qwertyaQ |
+      | FirstName1 | LastName1 | test_neganive@mail.test | qwerty1q |
+      | FirstName1 | LastName1 | test_neganive@mail.test |qwerty1Qa |
 
   @RegisterNegativeWithInvalidEmail
-  Scenario: Failed user registration with an invalid email address
+  Scenario Outline: Registration with invalid email
     Given The user launches the browser
-    When The user opens the petSitter homepage
-    And I'm going to the registration page
-    And I'm going to the registration page
-    And I'm filling in my registration details with an incorrect email
-    And I'm trying to submit a registration form with incorrect details
-    Then I should see an error message indicating that the email address is invalid
+    When User opens home page petSitter
+    And The user clicks the registration button Sign in
+    And The user fills out the registration form:
+      | firstName   | lastName   | email   | password   |
+      | <firstName> | <lastName> | <email> | <password> |
+
+    And The user clicks the registration button
+   Then User checks display of text about invalid email
     And The user closes the browser
+    Examples:
+      | firstName  | lastName  | email                   | password  |
+      | FirstName1 | LastName1 | test_neganivemail.test  | qwerty1Q! |
+      | FirstName1 | LastName1 | test_@neganive@mailtest | qwerty1Q! |
+      | FirstName1 | LastName1 | test_@neganive@mail./   | qwerty1Q! |
+      | FirstName1 | LastName1 | test_neganive@mail.t    | qwerty1Q! |

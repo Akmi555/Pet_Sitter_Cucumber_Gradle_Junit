@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="NegativeTest" verbose="1">
+    <test name="NegativeTests">
+        <classes>
+            <class name="petSitter.tests_API.api_auth_login.LoginNegativeTests"/>
+            <class name="petSitter.tests_API.api_auth_register.RegisterNegativeTests"/>
+            <class name="petSitter.tests_API.api_auth_register.RegisterWithInvalidEmailNegativeTests"/>
+            <class name="petSitter.tests_API.api_auth_register.RegisterWithInvalidPasswordNegativeTests"/>
+        </classes>
+    </test>
+</suite>

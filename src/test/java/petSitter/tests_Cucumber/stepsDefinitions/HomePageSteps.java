@@ -14,50 +14,50 @@ public class HomePageSteps {
 
 
 
-    @Given("Пользователь запускает браузер")
+    @Given("The user launches the browser")
     public void userLaunchesBrowser1(){
         new HomePage(driver).init();
 
     }
 
 
-    @And("Пользователь закрывает браузер")
+    @And("The user closes the browser")
     public void userCloseBrowser1() {
         new HomePage(driver).quitBrowser();
 
     }
 
-    @When("Пользователь открывает домашнюю страницу petSitter")
+    @When("User opens home page petSitter")
     public void UserOpensHomePage() {
         new HomePage(driver).openHomePage();
 
     }
 
-    @Then("Проверить, что заголовок домашней страницы отображается")
+    @Then("Check that the home page title is displayed")
     public void verifyHomePageTitlePresent() {
         Assert.assertTrue(new HomePage(driver).isHomePageTitlePresent());
     }
 //=============================================================================================================
-    @Given("The user launches the browser")
-    public void userLaunchesBrowser() {
-        new HomePage(driver).init();
-    }
-
-    @When("The user opens the petSitter homepage")
-    public void openHomePage() {
-        new HomePage(driver).navigateToHomePage();
-    }
-
-    @Then("Check that the homepage title is displayed")
-    public void checkHomePageTitleIsDisplayed() {
-        boolean isDisplayed = new HomePage(driver).isHomePageTitleDisplayed();
-        assertTrue("Заголовок домашней страницы не отображается!", isDisplayed);
-    }
-
-
-    @And("The user closes the browser")
-    public void userCloseBrowser() {
-        new HomePage(driver).quitBrowser();
-    }
+//    @Given("The user launches the browser")
+//    public void userLaunchesBrowser() {
+//        new HomePage(driver).init();
+//    }
+//
+//    @When("The user opens the petSitter homepage")
+//    public void openHomePage() {
+//        new HomePage(driver).navigateToHomePage();
+//    }
+//
+//    @Then("Check that the homepage title is displayed")
+//    public void checkHomePageTitleIsDisplayed() {
+//        boolean isDisplayed = new HomePage(driver).isHomePageTitleDisplayed();
+//        assertTrue("Заголовок домашней страницы не отображается!", isDisplayed);
+//    }
+//
+//
+//    @And("The user closes the browser")
+//    public void userCloseBrowser() {
+//        new HomePage(driver).quitBrowser();
+//    }
 
 }

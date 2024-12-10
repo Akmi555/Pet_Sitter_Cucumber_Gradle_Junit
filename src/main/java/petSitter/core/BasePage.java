@@ -1,9 +1,8 @@
 package petSitter.core;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -60,10 +59,13 @@ public class BasePage {
 public void init() {
     browser = System.getProperty("browser", "chrome"); // По умолчанию Chrome
     if (browser.equalsIgnoreCase("chrome")) {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     } else if (browser.equalsIgnoreCase("firefox")) {
+        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
     } else if (browser.equalsIgnoreCase("edge")) {
+        WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();
     } else {
         throw new IllegalArgumentException("Unsupported browser: " + browser);
@@ -91,6 +93,22 @@ public void init() {
     public void click(WebElement element) {
 
         element.click();
+
+    }
+
+    protected void type(WebElement element, String text) {
+        if (text != null) {
+            click(element);
+            element.clear();
+            element.sendKeys(text);
+        }
+    }
+
+    public void verifyValidationMessageByInvalidDate(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String validationMessage = (String) js.executeScript("return arguments[0].validationMessage;", element);
+        System.out.println("Валидационное сообщение:  " + validationMessage);
+        Assert.assertNotNull(validationMessage);
 
     }
 
