@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-@FindBy(xpath = "//h2[contains(text(),'Вход')]")
+@FindBy(xpath = "//h2[contains(text(),'Welcome')]")
     WebElement loginFormContent;
 
     public boolean checkLocationOnLoginPage(){

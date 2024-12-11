@@ -77,7 +77,7 @@ public class RegisterPage extends BasePage {
     }
 
 
-    @FindBy(xpath = "//button[contains(text(),'Register')]")
+    @FindBy(xpath = "//button[contains(text(),'Create account')]")
     WebElement registrationButton;
     public void clickOnRegistrationButton(){
         click(registrationButton);
