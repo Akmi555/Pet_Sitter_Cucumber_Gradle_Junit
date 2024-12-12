@@ -17,9 +17,9 @@ public class GetMyProfilePositiveTests extends TestBase {
 
 
     UserDTO expectedUser=UserDTO.builder()
-            .id(3)
-            .firstName("Mary")
-            .lastName("Bosh")
+            .id(433)
+            .firstName("FirstNameTest1")
+            .lastName("LastNameTest2")
             .email("test1_user_sitter@mail.test")
             .build();
 

@@ -34,8 +34,8 @@ public class LoginPageSteps {
 
     @And("I fill in valid login and password")
     public void iFillInValidLoginDetails() {
-        fillField(EMAIL_FIELD, "sputnikrg2@ukr.net");
-        fillField(PASSWORD_FIELD, "19Pdalv6@");
+        fillField(EMAIL_FIELD, "test1_user_sitter@mail.test");
+        fillField(PASSWORD_FIELD, "QWERTqwe123!");
     }
 
     @And("I click the submit")

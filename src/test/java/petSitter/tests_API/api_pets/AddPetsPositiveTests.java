@@ -28,8 +28,8 @@ public class AddPetsPositiveTests extends TestBase {
             .build();
 
     PetDTO petNew = PetDTO.builder()
-            .name("Tom")
-            .type("Cat")
+            .name("Rex")
+            .type("Dog")
             .photo("jpeg")
             .build();
 

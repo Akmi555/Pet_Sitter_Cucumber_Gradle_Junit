@@ -31,11 +31,11 @@ public class UpdateServicesPositiveTests extends TestBase {
             .build();
 
     ServiceDTO service = ServiceDTO.builder()
-            .id(3)
-            .serviceCategory(3)
+            .id(939)
+            .serviceCategory(1)
             .title("Кормить котика")
             .description("Кормить котика раз в день")
-            .price(100)
+            .price(1000)
             .build();
 
     ServiceDTO serviceUpdate = ServiceDTO.builder()

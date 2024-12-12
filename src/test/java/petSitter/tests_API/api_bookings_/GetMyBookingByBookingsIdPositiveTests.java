@@ -40,7 +40,7 @@ public class GetMyBookingByBookingsIdPositiveTests extends TestBase {
 
     @Test
     public void getMyBookingByBookingsIdPositiveTest() {
-        int bookingId = 4;
+        int bookingId = 660;
 
         Response serviceDTO = given()
                 .header(AUTH, "Bearer " + responseToken)
@@ -57,19 +57,19 @@ public class GetMyBookingByBookingsIdPositiveTests extends TestBase {
 
 
 
-    @Test
-    public void ttttt(){
-
-        String email = "test1_user_sitter@mail.test";
-        String password = "QWERTqwe123!";
-        String responseToken;
-        AuthRequestDTO requestDTO = AuthRequestDTO.builder()
-                .email(email)
-                .password(password)
-                .build();
-
-
-
-    }
+//    @Test
+//    public void ttttt(){
+//
+//        String email = "test1_user_sitter@mail.test";
+//        String password = "QWERTqwe123!";
+//        String responseToken;
+//        AuthRequestDTO requestDTO = AuthRequestDTO.builder()
+//                .email(email)
+//                .password(password)
+//                .build();
+//
+//
+//
+//    }
 
 }
