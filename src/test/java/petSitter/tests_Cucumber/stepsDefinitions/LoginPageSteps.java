@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import petSitter.pages.HomePage;
+import petSitter.pages.LoginPage;
+import petSitter.pages.UserPage;
 
 import java.time.Duration;
 
@@ -17,53 +20,34 @@ import static petSitter.core.BasePage.driver;
 public class LoginPageSteps {
 
 
+    @And("The user clicks the Log in button")
+    public void userClicksLogInButton(){
+        new HomePage(driver).clickOnLogInButton();
+    }
 
-    // Локаторы
-    private static final By EMAIL_FIELD = By.id("email");
-    private static final By PASSWORD_FIELD = By.id("password");
-    private static final By SUBMIT_BUTTON = By.xpath("//button[@type='submit']");
+    @And("The user fills out the login form with valid data")
+    public void userFillsOutLoginForm(){
+        new LoginPage(driver).fullLoginForm("test1_user_sitter@mail.test", "QWERTqwe123!");
+    }
 
-    private static final String LOGIN_PAGE_URL = "https://pets-care-u2srs.ondigitalocean.app/#/login";
-    private static final String USER_PAGE_URL = "https://pets-care-u2srs.ondigitalocean.app/#/user";
-
-    @And("I'm going to the login page")
-    public void iNavigateToTheLoginPage() {
-        clickElement(By.xpath("//a[contains(text(),'Log in')]"));
+    @And("The user clicks the sign in button")
+    public void userClicksSignInButton(){
+        new LoginPage(driver).clickOnSignInButton();
 
     }
 
-    @And("I fill in valid login and password")
-    public void iFillInValidLoginDetails() {
-        fillField(EMAIL_FIELD, "test1_user_sitter@mail.test");
-        fillField(PASSWORD_FIELD, "QWERTqwe123!");
+    @Then("Check that the logOut button is present on the UserPage")
+    public void checkThatLogOutButtonIsPresentOnTheUserPage(){
+        Assert.assertTrue(new UserPage(driver).logOutButtonIsPresent());
     }
 
-    @And("I click the submit")
-    public void iSubmitTheForm() {
-        clickElement(SUBMIT_BUTTON);
+    @And("The user fills out the login form with valid email and invalid password")
+    public void userFillsOutLogInformWithValidEmailAndInvalidPassword(){
+        new LoginPage(driver).fullLoginForm("test1_user_sitter@mail.test", "QWERTqwe123");
     }
 
-    @Then("I should see the user page")
-    public void iShouldSeeTheUserPage() {
-        waitForUrlToBe(USER_PAGE_URL);
-        Assert.assertEquals(USER_PAGE_URL, driver.getCurrentUrl());
-    }
-
-    // Вспомогательный метод для заполнения текстового поля
-    private void fillField(By locator, String value) {
-        WebElement field = driver.findElement(locator);
-        field.clear();
-        field.sendKeys(value);
-    }
-
-    // Вспомогательный метод для клика по элементу
-    private void clickElement(By locator) {
-        driver.findElement(locator).click();
-    }
-
-    // Вспомогательный метод для ожидания изменения URL
-    private void waitForUrlToBe(String url) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.urlToBe(url));
+    @Then("Check that the text about failed login is present on the Login page")
+    public void checkTextAboutFailedLoginIsPresent(){
+        Assert.assertTrue(new LoginPage(driver).textAboutFailedLogin());
     }
 }

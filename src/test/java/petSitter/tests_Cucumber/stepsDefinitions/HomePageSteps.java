@@ -15,14 +15,14 @@ public class HomePageSteps {
 
 
     @Given("The user launches the browser")
-    public void userLaunchesBrowser1(){
+    public void userLaunchesBrowser(){
         new HomePage(driver).init();
 
     }
 
 
     @And("The user closes the browser")
-    public void userCloseBrowser1() {
+    public void userCloseBrowser() {
         new HomePage(driver).quitBrowser();
 
     }

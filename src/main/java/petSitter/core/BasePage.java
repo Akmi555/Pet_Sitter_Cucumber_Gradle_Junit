@@ -9,9 +9,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.time.Duration;
+
+import static java.awt.event.KeyEvent.VK_PAGE_DOWN;
+import static java.awt.event.KeyEvent.VK_PAGE_UP;
 
 public class BasePage {
 
@@ -110,6 +115,42 @@ public void init() {
         System.out.println("Валидационное сообщение:  " + validationMessage);
         Assert.assertNotNull(validationMessage);
 
+    }
+
+    protected void shouldHaveText(WebElement element, String text, int timeout) {
+        WebDriverWait wait=new  WebDriverWait(driver, Duration.ofMillis(timeout));
+        try {
+            boolean isTextPresent=wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+            org.testng.Assert.assertTrue(isTextPresent,  "Expected text: [" + text + "], actual text: [" + element.getText() + "] in element: [" + element + "]");
+        } catch (TimeoutException e) {
+            throw new TimeoutException(e);
+        }
+    }
+
+    protected void scrollWithPageUp(int times){
+        try {
+            Robot robot= new Robot();
+            for(int i=0; i<times; i++) {
+                robot.keyPress(VK_PAGE_UP);
+                robot.keyRelease(VK_PAGE_UP);
+                robot.delay(100);// залипание-задержка
+            }
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void scrollWithPageDown(int times){
+        try {
+            Robot robot= new Robot();
+            for(int i=0; i<times; i++) {
+                robot.keyPress(VK_PAGE_DOWN);
+                robot.keyRelease(VK_PAGE_DOWN);
+                robot.delay(100);// залипание-задержка
+            }
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

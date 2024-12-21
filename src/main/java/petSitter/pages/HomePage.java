@@ -45,5 +45,9 @@ public class HomePage extends BasePage {
         click(signUpButton);
     }
 
-
+@FindBy(xpath = "//a[contains(text(),'Log in')]")
+    WebElement logInButton;
+    public  void  clickOnLogInButton(){
+        click(logInButton);
+    }
 }
