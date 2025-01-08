@@ -87,7 +87,8 @@ public class UserPage extends BasePage {
         photoSelect.sendKeys(filePath);
         return this;
     }
-////button[contains(text(),'Save')]
+
+    ////button[contains(text(),'Save')]
     public void clickOnSaveButton() {
         click(saveButton);
     }
@@ -249,7 +250,8 @@ public class UserPage extends BasePage {
 
     @FindBy(xpath = "//button[contains(text(),'Edit')]")
     WebElement editAccountButton;
-    public void clickOnEditAccountButton(){
+
+    public void clickOnEditAccountButton() {
         click(editAccountButton);
     }
 
@@ -257,9 +259,10 @@ public class UserPage extends BasePage {
     WebElement descriptionUpdate;
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement saveUpdateAccountButton;
-    public void updateAccount(){
+
+    public void updateAccount() {
         try {
-            Robot robot=new Robot();
+            Robot robot = new Robot();
             click(descriptionUpdate);
             robot.keyPress(VK_CONTROL);
             robot.keyPress(VK_A);
@@ -273,17 +276,20 @@ public class UserPage extends BasePage {
         type(descriptionUpdate, "Update account-HALLO!!!");
         click(saveUpdateAccountButton);
     }
+
     @FindBy(xpath = "//p[contains(.,'Description: Update account-HALLO!!!')]")
     WebElement newDescription;
-    public boolean checkUpdateDescriptionAccount(){
+
+    public boolean checkUpdateDescriptionAccount() {
         shouldHaveText(newDescription, "Description: Update account-HALLO!!!", 2);
         return true;
     }
-    public void clearDescriptionAccount(){
+
+    public void clearDescriptionAccount() {
         clickOnEditAccountButton();
 
         try {
-            Robot robot=new Robot();
+            Robot robot = new Robot();
             click(descriptionUpdate);
             robot.keyPress(VK_CONTROL);
             robot.keyPress(VK_A);
@@ -296,5 +302,20 @@ public class UserPage extends BasePage {
         }
         click(saveUpdateAccountButton);
     }
+
+@FindBy(xpath = "//button[contains(text(),'My Personal Data')]")
+    WebElement myPersonalDataButton;
+    public void clickOnMyPersonalDataButton(){
+        click(myPersonalDataButton);
+    }
+    @FindBy(xpath = "//button[contains(text(),'Delete Account')]")
+    WebElement deleteAccountButton;
+    public void clickOnDeleteAccountButton(){
+        click(deleteAccountButton);
+    }
+
+public void alertAccept(){
+
+}
 
 }

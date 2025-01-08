@@ -152,5 +152,10 @@ public void init() {
             throw new RuntimeException(e);
         }
     }
+    public void alertAccept(){
+    Alert alert;
+        alert = driver.switchTo().alert();
+        alert.accept();
 
+    }
 }

@@ -1,6 +1,7 @@
 Feature: User Registration
 
-  @RegisterPositive
+  #@RegisterPositive
+  @Smoke
   Scenario: Successful user registration
     Given The user launches the browser
     When User opens home page petSitter
@@ -10,7 +11,8 @@ Feature: User Registration
     Then Check that the user is on the LoginPage
     And The user closes the browser
 
-  @RegisterNegativeWithInvalidPassword
+ # @RegisterNegativeWithInvalidPassword
+  @Smoke
     Scenario Outline: Registration with invalid password
     Given The user launches the browser
     When User opens home page petSitter
@@ -29,7 +31,8 @@ Feature: User Registration
       | FirstName1 | LastName1 | test_neganive@mail.test | qwerty1q |
       | FirstName1 | LastName1 | test_neganive@mail.test |qwerty1Qa |
 
-  @RegisterNegativeWithInvalidEmail
+  #@RegisterNegativeWithInvalidEmail
+  @Smoke
   Scenario Outline: Registration with invalid email
     Given The user launches the browser
     When User opens home page petSitter

@@ -4,6 +4,10 @@ import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import petSitter.core.BasePage;
+import petSitter.pages.HomePage;
+import petSitter.pages.LoginPage;
 import petSitter.pages.ServicesPage;
 import petSitter.pages.UserPage;
 
@@ -159,9 +163,105 @@ public class UserPageSteps {
         Assert.assertTrue(new UserPage(driver).checkUpdateDescriptionAccount());
 
     }
+
     @And("Clear description account")
-    public void clearDescriptionAccount(){
+    public void clearDescriptionAccount() {
         new UserPage(driver).clearDescriptionAccount();
 
     }
+
+    @And("The user clicks on the Logout button")
+    public void clickOnLogOutButton() {
+        new UserPage(driver).clickOnLogOutButton();
+    }
+
+    @Then("The user check that Log in button is present on the LoginPage")
+    public void checkThatLogInButtonIsPresent() {
+        Assert.assertTrue(new HomePage(driver).logInButtonIsPresent());
+    }
+
+    @And("The user check that Sign in button is present")
+    public void signInButtonIsPresent() {
+        Assert.assertTrue(new LoginPage(driver).signInButtonIsPresent());
+    }
+
+    @And("Check that the input field email is cleared")
+    public void checkThatTheInputFieldEmailIsCleared() {
+        Assert.assertEquals("", new LoginPage(driver).getTextOfFieldEmail());
+    }
+
+    @And("Check that the input field password is cleared")
+    public void checkThatTheInputFieldPasswordIsCleared() {
+        Assert.assertEquals("", new LoginPage(driver).getTextOfFieldPassword());
+    }
+
+    @And("The user registers logs in and adds the service")
+    public void userRegistersLogsAddsService() {
+        new ServicesPage(driver).registerLoginAddService();
+    }
+
+    @And("The user clicks on My Personal Data button")
+    public void userClicksOnMyPersonalDataButton() {
+        new UserPage(driver).clickOnMyPersonalDataButton();
+    }
+
+    @And("The user clicks on Delete Account button")
+    public void userClicksOnDeleteAccountButton() {
+        new UserPage(driver).clickOnDeleteAccountButton();
+    }
+
+    @And("The user confirms the deletion of the account by accepting the message in the alert window")
+    public void userConfirmsDeletionAccountByAlert() {
+        new BasePage(driver).alertAccept();
+
+    }
+
+    @Then("Check that the account has been deleted and login is not possible")
+    public void checkThatTheAccountIsDeleted() {
+        new HomePage(driver).clickOnProfileIcon();
+        new LoginPage(driver).login("1735239349482test3@mail.test", "QWERTqwe123!");
+        Assert.assertTrue(new LoginPage(driver).textAboutFailedLogin());
+
+    }
+
+    @And("The user logs with valid data")
+    public void userLogsWithValidData() {
+        new LoginPage(driver).login("1735239349482test3@mail.test", "QWERTqwe123!");
+
+    }
+
+    @And("Check that the services of the deleted account are not displayed on the service page")
+    public void checkServicesOfTheDeletedAccountAreNotDisplayedOnTheServicePage() {
+        Assert.assertFalse(new ServicesPage(driver).checkServiceOnServicePage());
+    }
+@And("The user restores deleted account")
+    public void userRestoresDeletedAccount(){
+        new LoginPage(driver).userRestoresDeletedAccount("1735239349482test3@mail.test", "QWERTqwe123!");
+
+}
+
+    @And("The user clicks on Profile Icon")
+    public void clickOnProfileIcon(){
+        new HomePage(driver).clickOnProfileIcon();
+
+    }
+    @And("The user clicks on the Restore Account link")
+    public void clickOnRestoreAccountLink(){
+        new LoginPage(driver).clickOnRestoreAccountLink();
+
+    }
+    @And("The user fills out restore account form")
+    public void userFillsOutRestoreAccountForm(){
+        new LoginPage(driver).fullRestoreAccountForm("1735239349482test3@mail.test","QWERTqwe123!");
+    }
+    @And("The user clicks on the restore account button")
+    public void clickOnRestoreAccountButton(){
+        new LoginPage(driver).clickOnRestoreAccountButton();
+    }
+    @Then("Check that the account is restored")
+    public void checkThatTheAccountIsRestored(){
+        Assert.assertTrue(new LoginPage(driver).textAccountRestoredIsPresent());
+    }
+
+
 }

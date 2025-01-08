@@ -87,4 +87,13 @@ public class RegisterPage extends BasePage {
     verifyValidationMessageByInvalidDate( emailInput);
     }
 
+
+
+
+    public void registration(String firstName, String lastName,String email, String password) {
+        //=====registration=========
+        new HomePage(driver).clickOnSignUpButton();
+        new RegisterPage(driver).fullRegistrationForm(firstName, lastName, email, password);
+        new RegisterPage(driver).clickOnRegistrationButton();
+    }
 }

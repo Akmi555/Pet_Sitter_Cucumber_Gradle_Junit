@@ -32,7 +32,7 @@
 
 * **Браузеры:** Chrome, Firefox, Edge (актуальные версии).  
 * **ОС:** Windows 10/11.  
-* **Инструменты:** Selenium, Postman, JMeter, IntelliJ IDEA, MySQL, Jenkins.
+* **Инструменты:** Selenium, Postman, Rest Assured, IntelliJ IDEA, MySQL, Jenkins.
 
 ---
 
@@ -141,11 +141,14 @@
 
 **3\. Проект включает также тесты с использованием фреймворка Cucumber:**
 
-### `gradle cucumberChrome`
+### `gradle cucumberRegressionChrome`
+### `gradle cucumberSmokeChrome`
 
-### `gradle cucumberFirefox`
+### `gradle cucumberRegressionFirefox`
+### `gradle cucumberSmokeFirefox`
 
-### `gradle cucumberEdge`
+### `gradle cucumberRegressionEdge`
+### `gradle cucumberSmokeEdge`
 
 ### Пример успешного прохождения тестов Cucumber:
 
@@ -220,4 +223,12 @@
 Проект ориентирован на обеспечение качества через комбинированный подход ручного и автоматизированного тестирования. Внедрение CI/CD и использование мощных инструментов позволяет поддерживать стабильность продукта.
 
 * 
+#### **Примеры описания багов в Jira**
+1.
+![Example](jira_2_1.jpg)
+![Example](jira_2_2.jpg)
+![Example](jira_2_3.jpg)
 
+2.
+![Example](Bug4_1.jpg)
+![Example](Bug4_2.jpg)

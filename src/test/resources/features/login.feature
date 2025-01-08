@@ -1,6 +1,7 @@
 Feature: Login
 
-  @LoginPositive
+  #@LoginPositive
+  @Smoke
   Scenario: Successful login to your account
     Given The user launches the browser
     When User opens home page petSitter
@@ -10,7 +11,8 @@ Feature: Login
     Then Check that the logOut button is present on the UserPage
     And The user closes the browser
 
-  @LoginNegative
+  #@LoginNegative
+  @Smoke
   Scenario: Unsuccessful login to your account
     Given The user launches the browser
     When User opens home page petSitter

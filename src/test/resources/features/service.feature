@@ -1,6 +1,7 @@
 Feature: Service
 
-  @AddServicePositive
+ # @AddServicePositive
+  @Regression
   Scenario:Successfully added service
     Given The user launches the browser
     When User opens home page petSitter
@@ -17,7 +18,8 @@ Feature: Service
     And Delete service
     And The user closes the browser
 
-  @UpdateServicePositive
+ # @UpdateServicePositive
+  @Regression
   Scenario:Successfully update service
     Given The user launches the browser
     When User opens home page petSitter

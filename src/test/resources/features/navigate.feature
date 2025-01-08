@@ -1,5 +1,6 @@
 Feature: HomePage
-  @Navigate
+ # @Navigate
+  @Smoke
   Scenario: Check that the title is displayed on the home page.
     Given The user launches the browser
     When User opens home page petSitter
